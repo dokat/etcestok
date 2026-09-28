@@ -88,11 +88,11 @@
 
 ## Implémentation — déploiement GitHub Pages (cartographie décision → code)
 
-| Décision                                                                                                | Fichier(s)                                   |
-| ------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| CI (lint, check, tests) + build + publication Pages, moindres privilèges                                | `.github/workflows/deploy-pages.yml`         |
-| Deux jobs : `build` (aucun droit d'écriture) puis `deploy` (`pages: write`, environment `github-pages`) | idem                                         |
-| URL de base `/etcestok` au build (`KIT_BASE_PATH`), liens via `resolve()` de `$app/paths`                | `svelte.config.js`, `package.json`, composants |
+| Décision                                                                                                | Fichier(s)                                     |
+| ------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| CI (lint, check, tests) + build + publication Pages, moindres privilèges                                | `.github/workflows/deploy-pages.yml`           |
+| Deux jobs : `build` (aucun droit d'écriture) puis `deploy` (`pages: write`, environment `github-pages`) | idem                                           |
+| URL de base `/etcestok` au build (`KIT_BASE_PATH`), liens via `resolve()` de `$app/paths`               | `svelte.config.js`, `package.json`, composants |
 
 ## Points d'attention & suites possibles
 
