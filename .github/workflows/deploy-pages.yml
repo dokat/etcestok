@@ -1,0 +1,70 @@
+name: Déploiement GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Deux exécutions simultanées se marcheraient dessus : une seule à la fois, sans annulation.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+# Principe du moindre privilège : droits en lecture seule par défaut,
+# l'écriture est accordée job par job (pages: write uniquement pour deploy).
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Qualité et build statique
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v7
+
+      - name: Configurer Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Installer les dépendances (installation propre et reproductible)
+        run: npm ci
+
+      - name: Vérifier le format, les types et les tests
+        run: |
+          npm run lint
+          npm run check
+          npm run test
+
+      - name: Construire le site statique
+        # Les shells prérendus utilisent une base relative (Kit dérive le
+        # chemin de l'URL du navigateur) : le site fonctionne tel quel sous
+        # https://…/etcestok/, sans option --base.
+        run: npm run build
+
+      - name: Publier l'artefact du site
+        # Pas de traitement Jekyll : le déploiement par artefact (source
+        # « GitHub Actions ») le contourne naturellement — aucun .nojekyll
+        # ni étape configure-pages nécessaire.
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: build
+
+  deploy:
+    name: Déployer sur GitHub Pages
+    needs: build
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    # Environment « github-pages » : permet une règle de protection
+    # (approbation manuelle, environnement restreint…) depuis les réglages du dépôt.
+    environment: github-pages
+    permissions:
+      contents: read
+      pages: write
+      actions: read
+    steps:
+      - name: Déployer l'artefact
+        uses: actions/deploy-pages@v5

@@ -49,6 +49,18 @@ npm run build
 npm run preview
 ```
 
+## Déploiement GitHub Pages
+
+Le workflow [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml)
+construit et publie le site à chaque push sur `main` (déclenchement manuel possible).
+
+1. Dans les réglages du dépôt : **Pages → Build and deployment → Source : GitHub Actions**
+2. Pousser sur `main` (ou déclencher « Exécuter le workflow ») : le site est en ligne sur
+   `https://<utilisateur>.github.io/etcestok/`
+
+Le build utilise des chemins relatifs (Kit dérive la base de l'URL du navigateur) :
+aucune configuration de `base` n'est nécessaire pour un site de projet.
+
 ## Tests
 
 ```bash
@@ -103,6 +115,7 @@ etcestok/
 - [ADR 0001: Stack technique et architecture](docs/adr/0001-stack-technique.md)
 - [ADR 0002: Modèle de données et schéma IndexedDB](docs/adr/0002-modele-donnees.md)
 - [ADR 0003: Interface utilisateur et navigation](docs/adr/0003-interface-utilisateur.md)
+- [ADR 0004: Périmètre des statistiques et filtre de période](docs/adr/0004-statistiques-et-filtre-de-periode.md)
 - [Plan d'implémentation (état du projet)](docs/plan-implementation.md)
 
 ## License

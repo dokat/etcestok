@@ -8,6 +8,7 @@
 - **Socle complet (v0.1.0)** — 28 septembre 2026 ✅
 - **Révision des statistiques (ADR 0004)** — 28 septembre 2026 ✅
 - **Champ `commentaire` sur les suivis** — 28 septembre 2026 ✅
+- **Déploiement GitHub Pages (workflow Actions)** — 28 septembre 2026 ✅
 
 ## Séance 1 — socle : décisions prises en séance (déjà reversées dans les ADR)
 
@@ -84,6 +85,14 @@
 - `npm run test` : 30 tests Vitest (commentaire accepté, facultatif, rejeté si non-chaîne)
 - `npm run lint` : Prettier propre
 - `npm run build` : build static OK
+
+## Implémentation — déploiement GitHub Pages (cartographie décision → code)
+
+| Décision                                                                                                | Fichier(s)                                   |
+| ------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| CI (lint, check, tests) + build + publication Pages, moindres privilèges                                | `.github/workflows/deploy-pages.yml`         |
+| Deux jobs : `build` (aucun droit d'écriture) puis `deploy` (`pages: write`, environment `github-pages`) | idem                                         |
+| Base relative : aucune option `--base` nécessaire pour un site de projet                                | `build/index.html` (vérifié par build local) |
 
 ## Points d'attention & suites possibles
 
