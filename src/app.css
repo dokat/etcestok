@@ -1,0 +1,6 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/* Stratégie sombre par classe (ADR 0001) : la variante `dark:` de Tailwind 4
+   est liée à prefers-color-scheme par défaut, on la redéfinit sur la classe .dark */
+@custom-variant dark (&:where(.dark, .dark *));

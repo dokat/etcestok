@@ -1,0 +1,45 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Testing
+coverage
+
+# Production
+build
+
+# Misc
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# SvelteKit / Vite
+.svelte-kit
+.output
+.vercel
+.netlify
+vite.config.ts.timestamp-*
+*.timestamp-*.mjs
+
+# TypeScript
+*.tsbuildinfo
