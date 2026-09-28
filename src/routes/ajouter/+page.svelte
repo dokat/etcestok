@@ -1,5 +1,6 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
+  import { resolve } from '$app/paths';
 
   import SuiviForm from '$lib/components/SuiviForm.svelte';
   import { useSuivis } from '$lib/context';
@@ -20,7 +21,7 @@
   <SuiviForm
     onSubmit={async input => {
       await suivis.ajouter(input);
-      await goto('/suivis');
+      await goto(resolve('/suivis'));
     }}
   />
 </div>

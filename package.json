@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "KIT_BASE_PATH=/etcestok vite build",
     "preview": "vite preview",
     "sync": "svelte-kit sync",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

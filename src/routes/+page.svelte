@@ -1,5 +1,6 @@
 <script lang="ts">
   import { formatDateISO } from '$lib/dates';
+  import { resolve } from '$app/paths';
   import DateInput from '$lib/components/DateInput.svelte';
   import StatCard from '$lib/components/StatCard.svelte';
   import { useSuivis } from '$lib/context';
@@ -69,7 +70,7 @@
   {#if suivis.suivis.length === 0}
     <p class="mt-4">
       Aucun suivi pour l'instant.
-      <a class="underline" href="/ajouter">Ajouter un premier suivi</a>.
+      <a class="underline" href={resolve('/ajouter')}>Ajouter un premier suivi</a>.
     </p>
   {:else}
     <p class="mt-4">Aucun suivi sur cette période.</p>

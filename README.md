@@ -58,8 +58,10 @@ construit et publie le site à chaque push sur `main` (déclenchement manuel pos
 2. Pousser sur `main` (ou déclencher « Exécuter le workflow ») : le site est en ligne sur
    `https://<utilisateur>.github.io/etcestok/`
 
-Le build utilise des chemins relatifs (Kit dérive la base de l'URL du navigateur) :
-aucune configuration de `base` n'est nécessaire pour un site de projet.
+Le script `npm run build` fixe l'URL de base du site à `/etcestok` (`KIT_BASE_PATH`,
+lu dans `svelte.config.js`) ; en développement, l'application est servie à la racine.
+Les liens et la navigation utilisent `resolve()` de `$app/paths`, qui tient compte
+de cette base dans les deux environnements.
 
 ## Tests
 

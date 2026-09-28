@@ -92,7 +92,7 @@
 | ------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
 | CI (lint, check, tests) + build + publication Pages, moindres privilèges                                | `.github/workflows/deploy-pages.yml`         |
 | Deux jobs : `build` (aucun droit d'écriture) puis `deploy` (`pages: write`, environment `github-pages`) | idem                                         |
-| Base relative : aucune option `--base` nécessaire pour un site de projet                                | `build/index.html` (vérifié par build local) |
+| URL de base `/etcestok` au build (`KIT_BASE_PATH`), liens via `resolve()` de `$app/paths`                | `svelte.config.js`, `package.json`, composants |
 
 ## Points d'attention & suites possibles
 

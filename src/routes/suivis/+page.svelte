@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { resolve } from '$app/paths';
+
   import SuiviCard from '$lib/components/SuiviCard.svelte';
   import { useSuivis } from '$lib/context';
 
@@ -15,7 +17,7 @@
   <p class="mt-4 text-zinc-500">Chargement…</p>
 {:else if suivis.suivis.length === 0}
   <p class="mt-4">
-    Aucun suivi. <a class="underline" href="/ajouter">Ajouter un suivi</a>.
+    Aucun suivi. <a class="underline" href={resolve('/ajouter')}>Ajouter un suivi</a>.
   </p>
 {:else}
   <ul class="mt-4 flex flex-col gap-3">

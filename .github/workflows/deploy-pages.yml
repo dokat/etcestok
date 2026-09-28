@@ -40,9 +40,8 @@ jobs:
           npm run test
 
       - name: Construire le site statique
-        # Les shells prérendus utilisent une base relative (Kit dérive le
-        # chemin de l'URL du navigateur) : le site fonctionne tel quel sous
-        # https://…/etcestok/, sans option --base.
+        # Le site est un site de projet servi sous /etcestok/ : la base est
+        # fournie à Kit via KIT_BASE_PATH (voir package.json et svelte.config.js).
         run: npm run build
 
       - name: Publier l'artefact du site
